@@ -1,0 +1,139 @@
+<!-- BREADCRUMB -->
+<div id="breadcrumb" class="section">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+      <div class="col-md-12">
+        <ul class="breadcrumb-tree">
+          <li><a routerLink="/">Home</a></li>
+          <li><a routerLink="/">All Categories</a></li>
+          <li><a href="#">{{product['category']['category']}}</a></li>
+
+          <li class="active">{{product['name']}}</li>
+        </ul>
+      </div>
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>
+<!-- /BREADCRUMB -->
+
+<!-- SECTION -->
+<div class="section">
+  <!-- container -->
+  <div class="container">
+    <!-- row -->
+    <div class="row">
+      <!-- Product main img -->
+      <div class="col-md-5 col-md-push-2">
+        <div id="product-main-img">
+          <ng-template [ngIf]="thumbImages.length===0">
+            <div class="product-preview">
+              <img [src]="product['image']" alt="{{product['name']}}">
+            </div>
+          </ng-template>
+          <ng-template [ngIf]="thumbImages.length>0">
+            <div class="product-preview" *ngFor="let t of thumbImages">
+              <img [src]="t" alt="{{product['name']}}">
+            </div>
+          </ng-template>
+
+
+        </div>
+      </div>
+      <!-- /Product main img -->
+
+      <!-- Product thumb imgs -->
+      <div class="col-md-2  col-md-pull-5">
+        <ng-template [ngIf]="thumbImages.length>0">
+          <div id="product-imgs">
+            <div class="product-preview" *ngFor="let t of thumbImages">
+              <img [src]="t" alt="{{product['name']}}">
+            </div>
+
+          </div>
+        </ng-template>
+        <ng-template [ngIf]="thumbImages.length===0">
+          <div class="product-imgs">
+            <div class="product-preview">
+              <img [src]="product['image']" alt="{{product['name']}}">
+            </div>
+
+          </div>
+        </ng-template>
+      </div>
+      <!-- /Product thumb imgs -->
+
+      <!-- Product details -->
+      <div class="col-md-5">
+        <div class="product-details">
+          <h2 class="product-name">{{product['name']}}</h2>
+
+          <div>
+            <!-- <h3 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h3> -->
+            <h3 class="product-price">{{product['price']|currency:'USD'}}</h3>
+
+            <span class="product-available">{{product['quantity']!==0?"IN Stock" : "Out of Stock"}}</span>
+          </div>
+          <p>{{product['description']?product['description']:"The description of this product is not available."}}</p>
+
+          <!-- <div class="product-options">
+            <label>
+              Size
+              <select class="input-select">
+                <option value="0">X</option>
+              </select>
+            </label>
+            <label>
+              Color
+              <select class="input-select">
+                <option value="0">Red</option>
+              </select>
+            </label>
+          </div> -->
+
+          <div class="add-to-cart" *ngIf="product['quantity']!==0">
+            <div class="qty-label">
+              Qty
+              <div class="input-number">
+                <input type="number" [max]="product['quantity']>=1?product['quantity'] :0" readonly value="1" #quantity>
+                <span class="qty-up" (click)="Increase()">+</span>
+                <span class="qty-down" (click)="Decrease()">-</span>
+              </div>
+            </div>
+            <button class="add-to-cart-btn" (click)="addToCart(product['id'])" ><i class="fa fa-shopping-cart"
+             >
+
+            </i> add to cart</button>
+          </div>
+
+          <!-- <ul class="product-btns">
+            <li><a href="#"><i class="fa fa-heart-o"></i> add to wishlist</a></li>
+          </ul> -->
+
+          <ul class="product-links">
+            <li>Category:</li>
+
+            <li><a href="#">{{product['category']['category']}}</a></li>
+          </ul>
+
+          <!-- <ul class="product-links">
+            <li>Share:</li>
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="#"><i class="fa fa-envelope"></i></a></li>
+          </ul> -->
+
+        </div>
+      </div>
+      <!-- /Product details -->
+
+    </div>
+    <!-- /row -->
+  </div>
+  <!-- /container -->
+</div>
+<!-- /SECTION -->

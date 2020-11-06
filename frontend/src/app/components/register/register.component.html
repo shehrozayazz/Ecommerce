@@ -1,0 +1,61 @@
+<ngx-spinner
+bdColor="rgba(151,149,149,0.4"
+size="large"
+color="purple"
+type="ball-clip-rotate-pulse"
+fullscreen="true"
+>
+<h3 style="font: size 20px; color:black">Registering...
+
+</h3></ngx-spinner>
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+      <div class="col-md-6 d-flex mx-auto flex-column">
+        <!-- <ng-container *ngIf="loginMessage?.length > 0">
+          <div class="alert alert-danger alert-dismissible text-center">
+            {{loginMessage}}
+          </div>
+        </ng-container> -->
+        <form (submit)="onRegister(postForm)" #postForm="ngForm">
+          <div class="form-group">
+            <label for="First Name">First Name: </label>
+            <input ngModel name="fname" type="text" placeholder="Enter your first Name" required #fname="ngModel">
+          </div>
+          <div class="form-group">
+            <label for="Last Name">Last Name: </label>
+            <input ngModel name="lname" type="text" placeholder="Enter your last name" required #lname="ngModel">
+          </div>
+          <div class="form-group">
+            <label for="email">Email: </label>
+            <input ngModel name="email" type="email" placeholder="Enter your email" required #email="ngModel">
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input ngModel name="password" type="password" placeholder="Enter your password" required
+              #password="ngModel">
+          </div>
+
+          <div class="form-group">
+            <label for="password">Re-Enter Your Password</label>
+            <input ngModel name="password2" type="password" placeholder="Enter your password again" required
+              #password2="ngModel">
+          </div>
+          <div class="d-flex flex-column align-items-center justify-content-around">
+            <button class="btn btn-primary btn-sm btn-block" type="submit">Login</button>
+
+            <hr>
+            <h4 class="text-uppercase"><strong>Registration form</strong></h4>
+
+            <!-- <button (click)="signInWithGoogle()" class="btn btn-danger btn-sm btn-block mt-4"><span><i
+              class="fa fa-google"></i> Google </span>
+            </button> -->
+          </div>
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+</div>
